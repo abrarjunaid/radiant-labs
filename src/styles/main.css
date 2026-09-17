@@ -838,6 +838,22 @@ html.flight-on .fl-scroll-hint {
 html.flight-on .fl-card article {
   pointer-events: auto;
   margin: 0;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(77, 141, 255, 0.4) transparent;
+}
+
+html.flight-on .fl-card article::-webkit-scrollbar {
+  width: 6px;
+}
+
+html.flight-on .fl-card article::-webkit-scrollbar-thumb {
+  background: rgba(77, 141, 255, 0.35);
+  border-radius: 3px;
+}
+
+html.flight-on .fl-card article::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 html.flight-on .fl-card {
@@ -876,6 +892,9 @@ html.flight-on .fl-card.fl-right {
   display: block;
   width: 100%;
   height: auto;
+  max-height: 230px;
+  object-fit: cover;
+  object-position: top;
 }
 
 .fl-card h3 {
