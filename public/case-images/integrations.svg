@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="system-ui, sans-serif">
+  <rect width="1200" height="600" fill="#0a0c14"/>
+  <g stroke="#2a2f45" stroke-width="2" fill="none">
+    <path d="M 260 160 C 420 160 420 300 600 300"/>
+    <path d="M 260 300 L 600 300"/>
+    <path d="M 260 440 C 420 440 420 300 600 300"/>
+    <path d="M 600 300 L 940 300"/>
+  </g>
+  <g stroke="#4d8dff" stroke-width="2" fill="none" opacity="0.8">
+    <path d="M 260 300 L 600 300"/>
+  </g>
+  <g fill="#171b2e" stroke="#2a2f45">
+    <rect x="140" y="128" width="120" height="64" rx="12"/>
+    <rect x="140" y="268" width="120" height="64" rx="12"/>
+    <rect x="140" y="408" width="120" height="64" rx="12"/>
+  </g>
+  <g fill="#3a4160">
+    <rect x="164" y="152" width="72" height="10" rx="5"/>
+    <rect x="164" y="292" width="72" height="10" rx="5"/>
+    <rect x="164" y="432" width="72" height="10" rx="5"/>
+  </g>
+  <circle cx="600" cy="300" r="46" fill="#0f1220" stroke="#4d8dff" stroke-width="2"/>
+  <circle cx="600" cy="300" r="14" fill="#4d8dff"/>
+  <rect x="940" y="240" width="150" height="120" rx="14" fill="#171b2e" stroke="#4d8dff" stroke-width="1.5"/>
+  <rect x="962" y="266" width="106" height="10" rx="5" fill="#4d8dff" opacity="0.7"/>
+  <rect x="962" y="290" width="86" height="10" rx="5" fill="#2a2f45"/>
+  <rect x="962" y="314" width="96" height="10" rx="5" fill="#2a2f45"/>
+  <text x="600" y="520" text-anchor="middle" fill="#7db0ff" font-size="22" font-weight="600" letter-spacing="4">CASE 03 · MANUFACTURING ERP</text>
+  <text x="600" y="552" text-anchor="middle" fill="#6b7280" font-size="15">Placeholder. Replace with a real product screenshot.</text>
+</svg>
