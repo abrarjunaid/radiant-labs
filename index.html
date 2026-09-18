@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <script type="module" src="/src/main.js"></script>
 </head>
-<body data-page="home">
+<body data-page="home" class="theme-light">
 
   <header class="site-header">
     <div class="container header-inner">
@@ -33,52 +33,127 @@
   <main>
 
     <!-- HERO -->
-    <section class="hero">
-      <div class="hero-fallback" aria-hidden="true"></div>
-      <div class="hero-canvas" aria-hidden="true"></div>
+    <section class="hero hero-light">
       <div class="container">
-        <div class="hero-inner" data-reveal-group>
-          <span class="eyebrow" data-reveal>Bespoke ERP &amp; CRM Systems</span>
-          <h1 class="h1" data-reveal>Stop Bending Your Business Around Software. <span class="accent">We Build the ERP Around You.</span></h1>
-          <p class="lead" data-reveal>Radiant Labs designs and builds custom ERP and CRM systems around how your business actually runs. Software like this used to cost hundreds of thousands and take a year to roll out. With AI, we ship it in weeks, for a fraction of the cost, and push changes in days.</p>
-          <div class="hero-ctas" data-reveal>
-            <a class="btn btn-primary" href="/contact.html">Book Your Free Systems Audit</a>
-            <a class="btn btn-ghost" href="/case-studies.html">See What We've Built →</a>
+        <div class="hero-grid">
+          <div class="hero-inner" data-reveal-group>
+            <span class="eyebrow" data-reveal>Bespoke ERP &amp; CRM Systems</span>
+            <h1 class="h1" data-reveal>Stop Bending Your Business Around Software. <span class="accent">We Build the ERP Around You.</span></h1>
+            <p class="lead" data-reveal>Radiant Labs designs and builds custom ERP and CRM systems around how your business actually runs. Software like this used to cost hundreds of thousands and take a year to roll out. With AI, we ship it in weeks, for a fraction of the cost, and push changes in days.</p>
+            <div class="hero-ctas" data-reveal>
+              <a class="btn btn-primary" href="/contact.html">Book Your Free Systems Audit</a>
+              <a class="btn btn-ghost" href="/case-studies.html">See What We've Built →</a>
+            </div>
+            <p class="trust-line" data-reveal>Battle-tested inside our own companies first. Ready for any industry, from real estate to manufacturing.</p>
           </div>
-          <p class="trust-line" data-reveal>Battle-tested inside our own companies first. Ready for any industry, from real estate to manufacturing.</p>
+
+          <!-- animated ERP window -->
+          <div class="hero-app" data-reveal aria-hidden="true">
+            <div class="app-chrome">
+              <i></i><i></i><i></i>
+              <span>Your ERP · Command Dashboard</span>
+            </div>
+            <div class="app-body">
+              <aside class="app-side">
+                <b></b>
+                <u class="on"></u><u></u><u></u><u></u><u></u>
+              </aside>
+              <div class="app-main">
+                <div class="app-kpis">
+                  <div class="kpi">
+                    <small>Active Leads</small>
+                    <strong data-count="1284">1,284</strong>
+                    <em>live from every portal</em>
+                  </div>
+                  <div class="kpi">
+                    <small>Deals This Month</small>
+                    <strong data-count="24">24</strong>
+                    <em>pipeline on one screen</em>
+                  </div>
+                  <div class="kpi">
+                    <small>Collection Rate</small>
+                    <strong><span data-count="96" data-suffix="%">96%</span></strong>
+                    <em>invoices auto-generated</em>
+                  </div>
+                </div>
+                <div class="app-chart">
+                  <svg viewBox="0 0 320 110" preserveAspectRatio="none">
+                    <line x1="0" y1="30" x2="320" y2="30" class="app-grid" />
+                    <line x1="0" y1="60" x2="320" y2="60" class="app-grid" />
+                    <line x1="0" y1="90" x2="320" y2="90" class="app-grid" />
+                    <path class="app-area" d="M 0 92 L 40 84 L 80 88 L 120 70 L 160 74 L 200 52 L 240 44 L 280 28 L 320 16 L 320 110 L 0 110 Z" />
+                    <polyline class="app-line-muted" points="0,98 40,95 80,93 120,88 160,85 200,78 240,74 280,66 320,60" pathLength="1" />
+                    <polyline class="app-line" points="0,92 40,84 80,88 120,70 160,74 200,52 240,44 280,28 320,16" pathLength="1" />
+                  </svg>
+                </div>
+                <div class="app-rows">
+                  <div class="app-row"><s></s><span></span><b class="pill pill-green"></b></div>
+                  <div class="app-row"><s></s><span></span><b class="pill pill-blue"></b></div>
+                  <div class="app-row"><s></s><span></span><b class="pill pill-amber"></b></div>
+                </div>
+              </div>
+            </div>
+            <div class="app-toast">
+              <i>✓</i>
+              <div><strong>New lead captured</strong><span>Tagged to property · Agent notified on WhatsApp</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- PROBLEM / AGITATION -->
+    <!-- FACT STRIP -->
+    <section class="stats-strip">
+      <div class="container">
+        <div class="strip-grid" data-reveal-group>
+          <div class="strip-item" data-reveal>
+            <strong>Billions</strong>
+            <p>spent every year renting ERP and CRM software that almost fits</p>
+          </div>
+          <div class="strip-item" data-reveal>
+            <strong>Weeks</strong>
+            <p>to your first live module, not a year of consultants</p>
+          </div>
+          <div class="strip-item" data-reveal>
+            <strong>Days</strong>
+            <p>to ship changes, not quarterly release cycles</p>
+          </div>
+          <div class="strip-item" data-reveal>
+            <strong>5</strong>
+            <p>industries running systems we built, real estate to car rental</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE SHIFT -->
     <section class="section section-dark">
       <div class="container">
         <div class="section-head" data-reveal-group>
-          <span class="eyebrow" data-reveal>The Off-the-Shelf Tax</span>
+          <span class="eyebrow" data-reveal>The Shift</span>
           <h2 class="h2" data-reveal>You Didn't Start a Business to Fight Your Software.</h2>
-          <p class="lead" data-reveal>Businesses spend billions every year renting ERPs and CRMs built for someone else. Per-seat fees forever. Processes bent to fit the tool. Spreadsheets glued around the gaps. Whole departments invisible to each other.</p>
-          <p class="lead" data-reveal style="margin-top:16px"><strong style="color:var(--text)">That's not a discipline problem. It's a software problem. Software can be rebuilt around you. That's what we do.</strong></p>
+          <p class="lead" data-reveal>Most businesses run on a pile of rented tools and the spreadsheets gluing them together. A bespoke ERP replaces the pile with one system.</p>
         </div>
-        <div class="grid-4" data-reveal-group>
-          <div class="card stat-card" data-reveal>
-            <div class="stat-value"><span class="ph" title="Placeholder: replace with your real number">[X]</span> AED</div>
-            <p>spent every year on licenses for features you never use.</p>
-            <span class="ph-note">Placeholder: replace with real figure</span>
+        <div class="shift-grid" data-reveal-group>
+          <div class="shift-panel shift-old" data-reveal>
+            <h3 class="h3">The old way</h3>
+            <ul>
+              <li>Six disconnected tools, plus the spreadsheets covering the gaps</li>
+              <li>Per-seat licenses forever, for features you never use</li>
+              <li>Your process bent around someone else's software</li>
+              <li>Three departments, three versions of the same number</li>
+              <li>Nobody sees the whole operation in one place</li>
+            </ul>
           </div>
-          <div class="card stat-card" data-reveal>
-            <div class="stat-value"><span class="ph" title="Placeholder: replace with your real number">[X]</span> hrs</div>
-            <p>lost every week moving data between systems that don't talk.</p>
-            <span class="ph-note">Placeholder: replace with real figure</span>
-          </div>
-          <div class="card stat-card" data-reveal>
-            <div class="stat-value"><span class="ph" title="Placeholder: replace with your real number">[X]</span></div>
-            <p>spreadsheets quietly holding your operation together.</p>
-            <span class="ph-note">Placeholder: replace with real figure</span>
-          </div>
-          <div class="card stat-card" data-reveal>
-            <div class="stat-value"><span class="ph" title="Placeholder: replace with your real number">[X]</span>%</div>
-            <p>of your real process lives outside your official software.</p>
-            <span class="ph-note">Placeholder: replace with real figure</span>
+          <div class="shift-panel shift-new" data-reveal>
+            <h3 class="h3">With one bespoke ERP</h3>
+            <ul>
+              <li>Every module on one data spine, built around your process</li>
+              <li>You own the system outright. No per-seat fees, ever</li>
+              <li>Software shaped to how you actually work</li>
+              <li>One number, one truth, for every department</li>
+              <li>The whole operation live on one screen</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -123,9 +198,6 @@
           <h2 class="h2" data-reveal>One System. Every Department. Built Around You.</h2>
           <p class="lead" data-reveal>We don't resell licenses. We build your ERP module by module, starting where it bleeds most. And every module ships AI-enabled: agents working inside the CRM, extraction feeding the back office, alerts watching the numbers.</p>
         </div>
-        <figure class="home-shot" data-reveal>
-          <img src="/graphics/erp-dashboard.svg" alt="Custom ERP command dashboard: KPI cards, live revenue chart, and operations table on one screen" loading="lazy" />
-        </figure>
         <div class="grid-3" data-reveal-group>
           <div class="card" data-reveal>
             <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg></div>
@@ -152,8 +224,39 @@
       </div>
     </section>
 
-    <!-- VISIBILITY -->
+    <!-- AI + HUMAN -->
     <section class="section">
+      <div class="container">
+        <div class="section-head" data-reveal-group>
+          <span class="eyebrow" data-reveal>AI-Enabled, Human-Controlled</span>
+          <h2 class="h2" data-reveal>The AI Does the Work. Your Team Stays in Charge.</h2>
+          <p class="lead" data-reveal>We AI-enable the platform itself, threading intelligence through every module. The repetitive work runs itself. The decisions stay yours.</p>
+        </div>
+        <div class="shift-grid" data-reveal-group>
+          <div class="shift-panel shift-new" data-reveal>
+            <h3 class="h3">What the AI runs</h3>
+            <ul>
+              <li>Answers and qualifies every lead in seconds, 24/7</li>
+              <li>Drafts replies, follow-ups, and outreach</li>
+              <li>Reads documents and extracts the data into the system</li>
+              <li>Flags anomalies the moment a number drifts</li>
+            </ul>
+          </div>
+          <div class="shift-panel shift-human" data-reveal>
+            <h3 class="h3">What your team keeps</h3>
+            <ul>
+              <li>Approvals, exceptions, and edge cases</li>
+              <li>The final word on every deal and payment</li>
+              <li>Decisions, made with live numbers behind them</li>
+              <li>A full audit trail of both sides</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISIBILITY -->
+    <section class="section section-dark">
       <div class="container">
         <div class="section-head" data-reveal-group>
           <span class="eyebrow" data-reveal>Visibility</span>
@@ -186,7 +289,7 @@
     </section>
 
     <!-- PROCESS TEASER -->
-    <section class="section section-dark">
+    <section class="section">
       <div class="container">
         <div class="section-head" data-reveal-group>
           <span class="eyebrow" data-reveal>The Method</span>
@@ -228,7 +331,7 @@
     </section>
 
     <!-- PROOF / CASE STUDIES PREVIEW -->
-    <section class="section">
+    <section class="section section-dark">
       <div class="container">
         <div class="section-head" data-reveal-group>
           <span class="eyebrow" data-reveal>Proof</span>
@@ -262,7 +365,7 @@
     </section>
 
     <!-- GUARANTEE -->
-    <section class="section section-dark">
+    <section class="section">
       <div class="container">
         <div class="guarantee" data-reveal>
           <span class="eyebrow">Zero Risk</span>
