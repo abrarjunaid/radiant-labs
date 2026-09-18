@@ -129,6 +129,100 @@ if (processWrap) {
   }
 }
 
+/* ---------- the shift: six tools vs one system ---------- */
+const shift = document.querySelector('.shift-diagram')
+if (shift) {
+  const oldStage = shift.querySelector('.shift-old .shift-stage')
+  const oldNode = oldStage.querySelector('.shift-node')
+  const links = oldStage.querySelector('.shift-links')
+  const targets = [...oldStage.querySelectorAll('.shift-targets li')]
+  const newStage = shift.querySelector('.shift-new .shift-stage')
+  const newNode = newStage.querySelector('.shift-node')
+  const arrow = newStage.querySelector('.shift-arrow')
+  const arrowLabel = arrow.querySelector('span')
+  const erp = newStage.querySelector('.shift-erp')
+  const modules = [...erp.querySelectorAll('.shift-modules li')]
+  const counts = [...shift.querySelectorAll('.shift-count strong')]
+  let drawn = reducedMotion
+
+  // one curve per target, from the right edge of "You" to the left edge of each box.
+  // a second dashed copy of each curve carries the idle "marching" animation.
+  const drawLinks = () => {
+    const box = oldStage.getBoundingClientRect()
+    const from = oldNode.getBoundingClientRect()
+    const x1 = from.right - box.left
+    const y1 = from.top + from.height / 2 - box.top
+    links.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`)
+    links.innerHTML = targets
+      .map((li) => {
+        const to = li.getBoundingClientRect()
+        const x2 = to.left - box.left
+        const y2 = to.top + to.height / 2 - box.top
+        const mx = (x1 + x2) / 2
+        const d = `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`
+        return `<path class="base" d="${d}"></path><path class="flow" d="${d}"></path>`
+      })
+      .join('')
+    links.querySelectorAll('path.base').forEach((path) => {
+      const len = path.getTotalLength()
+      path.style.strokeDasharray = drawn ? '' : len
+      path.style.strokeDashoffset = drawn ? '' : len
+    })
+  }
+  drawLinks()
+  new ResizeObserver(drawLinks).observe(oldStage)
+
+  if (!reducedMotion) {
+    counts.forEach((c) => (c.textContent = '0'))
+    gsap.set([oldNode, newNode], { scale: 0.7, opacity: 0 })
+    gsap.set(targets, { x: -18, opacity: 0 })
+    gsap.set(arrow, { scaleX: 0 })
+    gsap.set(arrowLabel, { opacity: 0, y: 6 })
+    gsap.set(erp, { scale: 0.92, opacity: 0 })
+    gsap.set(modules, { y: 10, opacity: 0 })
+
+    const countTo = (el) => {
+      const state = { v: 0 }
+      const end = Number(el.dataset.count)
+      return gsap.to(state, {
+        v: end,
+        duration: 0.7,
+        ease: 'power1.out',
+        onUpdate: () => (el.textContent = Math.round(state.v)),
+      })
+    }
+
+    const tl = gsap.timeline({
+      scrollTrigger: { trigger: shift, start: 'top 68%', once: true },
+      onComplete: () => shift.classList.add('shift-live'),
+    })
+    tl.to(oldNode, { scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(1.8)' })
+      .add(countTo(counts[0]), '<')
+      .to(
+        oldStage.querySelectorAll('path.base'),
+        { strokeDashoffset: 0, duration: 0.7, ease: 'power2.inOut', stagger: 0.09 },
+        '-=0.1'
+      )
+      .to(targets, { x: 0, opacity: 1, duration: 0.45, ease: 'power2.out', stagger: 0.09 }, '<+0.35')
+      .call(() => {
+        drawn = true
+        oldStage.querySelectorAll('path.base').forEach((p) => {
+          p.style.strokeDasharray = ''
+          p.style.strokeDashoffset = ''
+        })
+      })
+      // new way
+      .to(newNode, { scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(1.8)' }, '-=0.5')
+      .add(countTo(counts[1]), '<')
+      .to(arrow, { scaleX: 1, duration: 0.55, ease: 'power3.inOut' }, '-=0.15')
+      .to(arrowLabel, { opacity: 1, y: 0, duration: 0.35 }, '-=0.2')
+      .to(erp, { scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.4)' }, '-=0.25')
+      .to(modules, { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out', stagger: 0.07 }, '-=0.3')
+  } else {
+    shift.classList.add('shift-live')
+  }
+}
+
 /* ---------- lazy-load 3D scenes ---------- */
 function lazyScene(selector, loader) {
   const el = document.querySelector(selector)

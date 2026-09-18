@@ -97,6 +97,10 @@
               <i>✓</i>
               <div><strong>New lead captured</strong><span>Tagged to property · Agent notified on WhatsApp</span></div>
             </div>
+            <div class="app-toast app-toast-alt">
+              <i>!</i>
+              <div><strong>Anomaly flagged</strong><span>Expense 3x above average · Sent for approval</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -127,34 +131,68 @@
     </section>
 
     <!-- THE SHIFT -->
-    <section class="section section-dark">
+    <section class="section section-dark" id="shift">
       <div class="container">
         <div class="section-head" data-reveal-group>
           <span class="eyebrow" data-reveal>The Shift</span>
-          <h2 class="h2" data-reveal>You Didn't Start a Business to Fight Your Software.</h2>
-          <p class="lead" data-reveal>Most businesses run on a pile of rented tools and the spreadsheets gluing them together. A bespoke ERP replaces the pile with one system.</p>
+          <h2 class="h2" data-reveal>From Six Disconnected Tools <span class="accent">to One System Built Around You.</span></h2>
+          <p class="lead" data-reveal>CRM, accounting, inventory, payroll, reporting and the spreadsheets between them don't go away. They stop being six things you hold together.</p>
         </div>
-        <div class="shift-grid" data-reveal-group>
-          <div class="shift-panel shift-old" data-reveal>
-            <h3 class="h3">The old way</h3>
-            <ul>
-              <li>Six disconnected tools, plus the spreadsheets covering the gaps</li>
+
+        <div class="shift-diagram" data-reveal>
+          <div class="shift-col shift-old">
+            <span class="shift-label">Old way</span>
+            <div class="shift-stage">
+              <div class="shift-source">
+                <div class="shift-count"><strong data-count="6">0</strong><small>systems to<br>hold together</small></div>
+                <div class="shift-node">You</div>
+              </div>
+              <svg class="shift-links" aria-hidden="true"></svg>
+              <ul class="shift-targets">
+                <li>CRM</li>
+                <li>Accounting</li>
+                <li>Inventory</li>
+                <li>HR &amp; Payroll</li>
+                <li>Spreadsheets</li>
+                <li>Reporting</li>
+              </ul>
+            </div>
+            <ul class="shift-points shift-points-old">
               <li>Per-seat licenses forever, for features you never use</li>
               <li>Your process bent around someone else's software</li>
               <li>Three departments, three versions of the same number</li>
               <li>Nobody sees the whole operation in one place</li>
             </ul>
           </div>
-          <div class="shift-panel shift-new" data-reveal>
-            <h3 class="h3">With one bespoke ERP</h3>
-            <ul>
+
+          <div class="shift-col shift-new">
+            <span class="shift-label">New way</span>
+            <div class="shift-stage">
+              <div class="shift-source">
+                <div class="shift-count"><strong data-count="1">0</strong><small>system to run</small></div>
+                <div class="shift-node">You</div>
+              </div>
+              <div class="shift-arrow"><span>one system</span></div>
+              <div class="shift-erp">
+                <span class="shift-erp-title">Your ERP</span>
+                <ul class="shift-modules">
+                  <li>CRM</li>
+                  <li>Accounting</li>
+                  <li>Inventory</li>
+                  <li>HR &amp; Payroll</li>
+                  <li>Operations</li>
+                  <li>Reporting</li>
+                </ul>
+              </div>
+            </div>
+            <ul class="shift-points shift-points-new">
               <li>Every module on one data spine, built around your process</li>
               <li>You own the system outright. No per-seat fees, ever</li>
-              <li>Software shaped to how you actually work</li>
               <li>One number, one truth, for every department</li>
               <li>The whole operation live on one screen</li>
             </ul>
           </div>
+
         </div>
       </div>
     </section>

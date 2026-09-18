@@ -1805,7 +1805,20 @@ body.theme-light .cs-shot {
   box-shadow: 0 14px 40px -12px rgba(13, 18, 32, 0.3);
   opacity: 0;
   transform: translateY(10px);
-  animation: appToast 8s ease 2.4s infinite;
+  animation: appToast 12s ease 2.4s infinite;
+}
+
+/* second toast: top-right, takes the other half of the cycle */
+.app-toast-alt {
+  left: auto;
+  bottom: auto;
+  right: -26px;
+  top: 118px;
+  animation-delay: 8.4s;
+}
+
+.app-toast.app-toast-alt i {
+  background: #e8a317;
 }
 
 .app-toast i {
@@ -1835,9 +1848,9 @@ body.theme-light .cs-shot {
 }
 
 @keyframes appToast {
-  0%, 6% { opacity: 0; transform: translateY(10px); }
-  12%, 72% { opacity: 1; transform: translateY(0); }
-  80%, 100% { opacity: 0; transform: translateY(10px); }
+  0%, 4% { opacity: 0; transform: translateY(10px); }
+  9%, 40% { opacity: 1; transform: translateY(0); }
+  46%, 100% { opacity: 0; transform: translateY(10px); }
 }
 
 /* ---------- fact strip ---------- */
@@ -1868,7 +1881,270 @@ body.theme-light .cs-shot {
   color: var(--text-dim);
 }
 
-/* ---------- shift / split comparison panels ---------- */
+/* ---------- shift / six tools vs one system diagram ---------- */
+
+.shift-diagram {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--black);
+  padding: clamp(28px, 4vw, 48px) clamp(22px, 3.5vw, 44px) clamp(10px, 2vw, 22px);
+}
+
+.shift-col {
+  padding: 0 clamp(8px, 2vw, 28px);
+}
+
+.shift-col + .shift-col {
+  border-left: 1px dashed var(--line-strong);
+}
+
+.shift-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 26px;
+}
+
+.shift-new .shift-label {
+  color: var(--accent);
+}
+
+.shift-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0;
+  min-height: 360px;
+}
+
+.shift-source {
+  position: relative;
+  z-index: 2;
+}
+
+.shift-count {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 0;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.shift-count strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-faint);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.shift-new .shift-count strong {
+  color: var(--accent);
+}
+
+.shift-count small {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.shift-node,
+.shift-targets li,
+.shift-modules li {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: var(--text);
+  background: var(--black-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  padding: 12px 22px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(13, 18, 32, 0.04);
+}
+
+.shift-node {
+  min-width: 84px;
+  font-weight: 600;
+}
+
+.shift-links {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shift-links path {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+/* after the draw-in, a slow marching dash: the chasing never stops */
+.shift-links path.flow {
+  stroke: var(--text-faint);
+  stroke-opacity: 0.45;
+  stroke-dasharray: 3 9;
+  opacity: 0;
+}
+
+.shift-live .shift-links path.flow {
+  opacity: 1;
+  animation: shiftMarch 2.4s linear infinite;
+}
+
+@keyframes shiftMarch {
+  to { stroke-dashoffset: -24; }
+}
+
+.shift-targets {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  grid-column: 3;
+  position: relative;
+  z-index: 2;
+}
+
+.shift-targets li {
+  min-width: 168px;
+  text-align: left;
+}
+
+.shift-arrow {
+  position: relative;
+  height: 2px;
+  margin: 0 8px;
+  background: var(--accent);
+  transform-origin: left center;
+}
+
+.shift-arrow::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  border: 6px solid transparent;
+  border-left: 9px solid var(--accent);
+  border-right: 0;
+  transform: translateY(-50%);
+}
+
+.shift-arrow span {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.shift-erp {
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(46, 109, 240, 0.35);
+  border-radius: 14px;
+  background: var(--accent-dim);
+  padding: 20px 18px 18px;
+  box-shadow: 0 18px 50px -25px var(--accent-glow);
+  transform-origin: left center;
+}
+
+.shift-live .shift-erp {
+  animation: shiftPulse 3.6s ease-in-out infinite;
+}
+
+@keyframes shiftPulse {
+  0%, 100% { box-shadow: 0 18px 50px -25px var(--accent-glow); }
+  50% { box-shadow: 0 18px 56px -18px var(--accent-glow); }
+}
+
+.shift-erp-title {
+  display: block;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.shift-modules {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.shift-modules li {
+  min-width: 108px;
+  padding: 12px 14px;
+  border-color: rgba(46, 109, 240, 0.22);
+}
+
+.shift-points {
+  list-style: none;
+  display: grid;
+  gap: 11px;
+  margin: 30px 0 34px;
+}
+
+.shift-points li {
+  position: relative;
+  padding-left: 32px;
+  color: var(--text-dim);
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+.shift-points li::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.shift-points-old li::before {
+  content: '\2715';
+  background: rgba(214, 69, 69, 0.1);
+  color: #c2484d;
+}
+
+.shift-points-new li::before {
+  content: '\2713';
+  background: var(--accent-dim);
+  color: var(--accent-bright);
+}
+
+/* ---------- split comparison panels (used by the AI + Human section) ---------- */
 
 .shift-grid {
   display: grid;
@@ -1913,32 +2189,50 @@ body.theme-light .cs-shot {
   font-weight: 700;
 }
 
-.shift-old li::before {
-  content: '✕';
+.shift-panel.shift-old li::before {
+  content: '\2715';
   background: rgba(214, 69, 69, 0.1);
   color: #c2484d;
 }
 
-.shift-new {
+.shift-panel.shift-new {
   border-color: rgba(46, 109, 240, 0.35);
   box-shadow: 0 18px 50px -25px var(--accent-glow);
 }
 
-.shift-new li::before {
-  content: '✓';
+.shift-panel.shift-new li::before {
+  content: '\2713';
   background: var(--accent-dim);
   color: var(--accent-bright);
 }
 
-.shift-human li::before {
-  content: '✓';
+.shift-panel.shift-human li::before {
+  content: '\2713';
   background: rgba(34, 165, 92, 0.1);
   color: #1e8a4e;
 }
 
-/* dark-theme fallbacks for shift colors (if reused off-home) */
+/* dark-theme fallbacks (if reused off-home) */
+body:not(.theme-light) .shift-diagram,
 body:not(.theme-light) .shift-panel {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+}
+
+body:not(.theme-light) .shift-node,
+body:not(.theme-light) .shift-targets li,
+body:not(.theme-light) .shift-modules li {
+  background: var(--black-3);
+  box-shadow: none;
+}
+
+@media (max-width: 1040px) {
+  .shift-targets li {
+    min-width: 140px;
+  }
+
+  .shift-modules li {
+    min-width: 0;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1954,12 +2248,94 @@ body:not(.theme-light) .shift-panel {
     left: 10px;
   }
 
+  .app-toast-alt {
+    left: auto;
+    right: 10px;
+  }
+
   .strip-grid {
     grid-template-columns: 1fr 1fr;
   }
 
+  .shift-diagram,
   .shift-grid {
     grid-template-columns: 1fr;
+  }
+
+  .shift-col + .shift-col {
+    border-left: 0;
+    border-top: 1px dashed var(--line-strong);
+    padding-top: 34px;
+  }
+
+  .shift-points {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .shift-stage {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    min-height: 0;
+    gap: 22px;
+  }
+
+  .shift-source {
+    padding-top: 74px;
+  }
+
+  .shift-count {
+    bottom: auto;
+    top: 0;
+  }
+
+  .shift-links {
+    display: none;
+  }
+
+  .shift-targets {
+    grid-column: 1;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .shift-targets li,
+  .shift-modules li {
+    min-width: 0;
+    padding: 12px 10px;
+    font-size: 0.88rem;
+  }
+
+  /* arrow turns vertical */
+  .shift-arrow {
+    width: 2px;
+    height: 40px;
+    margin: 0 0 0 41px;
+    transform-origin: top center;
+  }
+
+  .shift-arrow::after {
+    right: auto;
+    top: auto;
+    left: 50%;
+    bottom: -1px;
+    border: 6px solid transparent;
+    border-top: 9px solid var(--accent);
+    border-bottom: 0;
+    transform: translateX(-50%);
+  }
+
+  .shift-arrow span {
+    left: 16px;
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .shift-erp {
+    width: 100%;
+    transform-origin: top center;
   }
 }
 
