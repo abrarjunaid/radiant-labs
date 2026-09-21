@@ -8,14 +8,32 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Urbanist:wght@700&display=swap" rel="stylesheet" />
   <script type="module" src="/src/main.js"></script>
 </head>
 <body data-page="home" class="theme-light">
+  <!-- brand glyph: the flask "a" used by the logo (drawn on Urbanist Bold's grid) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <clipPath id="flask-bowl"><circle cx="28" cy="49" r="14.6"/></clipPath>
+      <symbol id="flask-a" viewBox="0 0 58 75" overflow="visible">
+        <circle fill="none" stroke="currentColor" stroke-width="11" cx="28" cy="49" r="20" pathLength="360" stroke-dasharray="0 26 308 26" transform="rotate(-90 28 49)"/>
+        <rect fill="currentColor" x="44" y="25" width="12" height="50"/>
+        <g clip-path="url(#flask-bowl)" fill="#4d8dff">
+          <path d="M12 52 C 19 46, 25 51, 29 51 S 39 46, 44 50 L 44 66 L 12 66 Z"/>
+        </g>
+        <g fill="#4d8dff">
+          <circle cx="31" cy="15" r="5.5"/>
+          <circle cx="23" cy="3.5" r="4.5"/>
+          <circle cx="30" cy="-6.5" r="3.5"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="/">Radiant<span> Labs</span></a>
+      <a class="logo" href="/" aria-label="Radiant Labs, home"><span class="w1">radiant</span>l<svg class="flask" aria-hidden="true" focusable="false"><use href="#flask-a"/></svg>bs</a>
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/services.html">Services</a>
         <a href="/case-studies.html">Case Studies</a>
@@ -551,7 +569,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <a class="logo" href="/">Radiant<span> Labs</span></a>
+          <a class="logo" href="/" aria-label="Radiant Labs, home"><span class="w1">radiant</span>l<svg class="flask" aria-hidden="true" focusable="false"><use href="#flask-a"/></svg>bs</a>
           <p>The AI systems division of Radiant Group. We build the bespoke ERP and CRM systems that replace off-the-shelf software and manual work, battle-tested inside our own businesses first.</p>
         </div>
         <div class="footer-col">

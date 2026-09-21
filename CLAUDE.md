@@ -34,7 +34,11 @@ by industry only.
 1. **No em dashes anywhere in site copy.** Use periods, commas, colons,
    parentheses. Check with `grep "—" *.html` before committing.
 2. **Meta `<title>`/descriptions use lowercase `rdnt labs`** (format:
-   `Page | rdnt labs`). The UI logo stays "Radiant Labs".
+   `Page | rdnt labs`). The UI logo is the "radiant labs" wordmark
+   (Urbanist Bold, lowercase) with the "a" of labs drawn as a flask: an
+   inline `#flask-a` SVG symbol at the top of each page's `<body>`, used by
+   `.logo` in the header and footer. Keep the symbol, the Urbanist font link
+   and the markup in sync across all pages. `public/favicon.svg` is the flask.
 3. **Never name client companies** in case studies; industry descriptors only.
 4. Tone: Hormozi-style direct response. Short punchy sentences. No AI jargon.
 5. Metrics are `[X]` placeholders wrapped in `<span class="ph">` until the
