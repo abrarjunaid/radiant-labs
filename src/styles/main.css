@@ -56,8 +56,14 @@ body {
 }
 
 ::selection {
-  background: var(--accent);
+  background: #7db0ff;
   color: #04060c;
+}
+
+/* light pages: a soft blue tint keeps the text readable */
+body.theme-light ::selection {
+  background: #cfe0ff;
+  color: #0e1424;
 }
 
 img,
