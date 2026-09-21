@@ -19,7 +19,6 @@
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/services.html">Services</a>
         <a href="/case-studies.html">Case Studies</a>
-        <a href="/process.html">Process</a>
         <a href="/about.html">About</a>
         <a href="/contact.html">Contact</a>
       </nav>
@@ -52,6 +51,7 @@
             <div class="app-chrome">
               <i></i><i></i><i></i>
               <span>Your ERP · Command Dashboard</span>
+              <em class="app-live">Live</em>
             </div>
             <div class="app-body">
               <aside class="app-side">
@@ -84,6 +84,16 @@
                     <path class="app-area" d="M 0 92 L 40 84 L 80 88 L 120 70 L 160 74 L 200 52 L 240 44 L 280 28 L 320 16 L 320 110 L 0 110 Z" />
                     <polyline class="app-line-muted" points="0,98 40,95 80,93 120,88 160,85 200,78 240,74 280,66 320,60" pathLength="1" />
                     <polyline class="app-line" points="0,92 40,84 80,88 120,70 160,74 200,52 240,44 280,28 320,16" pathLength="1" />
+                    <path id="app-line-path" d="M0,92 L40,84 L80,88 L120,70 L160,74 L200,52 L240,44 L280,28 L320,16" fill="none" stroke="none" />
+                    <g class="app-cursor">
+                      <line x1="0" y1="0" x2="0" y2="110" />
+                      <animateTransform attributeName="transform" type="translate" from="0 0" to="320 0" dur="7s" begin="3.2s" repeatCount="indefinite" />
+                    </g>
+                    <g class="app-dot">
+                      <circle class="app-dot-ring" r="9" />
+                      <circle class="app-dot-core" r="3.5" />
+                      <animateMotion dur="7s" begin="3.2s" repeatCount="indefinite"><mpath href="#app-line-path" /></animateMotion>
+                    </g>
                   </svg>
                 </div>
                 <div class="app-rows">
@@ -106,6 +116,32 @@
       </div>
     </section>
 
+    <!-- INDUSTRIES MARQUEE -->
+    <section class="marquee-band" aria-label="Industries running systems we built">
+      <div class="container">
+        <p class="marquee-label" data-reveal>Running live operations in 25+ businesses across the UAE <svg class="flag-uae" viewBox="0 0 24 16" aria-label="United Arab Emirates" role="img"><rect width="24" height="16" fill="#00732f"/><rect y="5.33" width="24" height="5.34" fill="#fff"/><rect y="10.67" width="24" height="5.33" fill="#000"/><rect width="6" height="16" fill="#ff0000"/></svg></p>
+      </div>
+      <div class="marquee" data-reveal>
+        <ul class="marquee-track">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>Real Estate Brokerage</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Property Management</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V9l6 4V9l6 4V9l6 4v8z"/><path d="M8 17h2M13 17h2"/></svg>Manufacturing</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Event Management</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14l1-6-2-5H6L4 11z"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></svg>Car Rental</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>Real Estate Brokerage</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Property Management</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V9l6 4V9l6 4V9l6 4v8z"/><path d="M8 17h2M13 17h2"/></svg>Manufacturing</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Event Management</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14l1-6-2-5H6L4 11z"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></svg>Car Rental</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>Real Estate Brokerage</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Property Management</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V9l6 4V9l6 4V9l6 4v8z"/><path d="M8 17h2M13 17h2"/></svg>Manufacturing</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Event Management</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14l1-6-2-5H6L4 11z"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></svg>Car Rental</li>
+        </ul>
+      </div>
+    </section>
+
     <!-- FACT STRIP -->
     <section class="stats-strip">
       <div class="container">
@@ -123,8 +159,8 @@
             <p>to ship changes, not quarterly release cycles</p>
           </div>
           <div class="strip-item" data-reveal>
-            <strong>5</strong>
-            <p>industries running systems we built, real estate to car rental</p>
+            <strong>25+</strong>
+            <p>businesses running operations on systems we built, real estate to car rental</p>
           </div>
         </div>
       </div>
@@ -198,7 +234,7 @@
     </section>
 
     <!-- WHY NOW: THE MATH CHANGED -->
-    <section class="section">
+    <section class="section" id="why-now">
       <div class="container">
         <div class="section-head" data-reveal-group>
           <span class="eyebrow" data-reveal>Why Now</span>
@@ -209,19 +245,31 @@
           <div class="card" data-reveal>
             <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><line x1="6" y1="12" x2="6" y2="12.01"/><line x1="18" y1="12" x2="18" y2="12.01"/></svg></div>
             <span class="pillar-num">Cost</span>
-            <h3 class="h3">Hundreds of thousands, now a fraction</h3>
+            <h3 class="h3"><span class="was">Hundreds of thousands,</span> now a fraction</h3>
+            <div class="then-now" aria-hidden="true">
+              <div class="tn-row tn-then"><span>Then</span><i style="--w: 100%"></i><b>6 figures</b></div>
+              <div class="tn-row tn-now"><span>Now</span><i style="--w: 10%"></i><b>A fraction</b></div>
+            </div>
             <p>AI-accelerated engineering cuts custom build costs by an order of magnitude. And you own the system outright. No per-seat fees. Ever.</p>
           </div>
           <div class="card" data-reveal>
             <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></div>
             <span class="pillar-num">Timeline</span>
-            <h3 class="h3">Twelve months, now weeks</h3>
+            <h3 class="h3"><span class="was">Twelve months,</span> now weeks</h3>
+            <div class="then-now" aria-hidden="true">
+              <div class="tn-row tn-then"><span>Then</span><i style="--w: 100%"></i><b>12 months</b></div>
+              <div class="tn-row tn-now"><span>Now</span><i style="--w: 12%"></i><b>Weeks</b></div>
+            </div>
             <p>Implementations that took a year of consultants now ship module by module. Your first module is live before an off-the-shelf rollout would clear procurement.</p>
           </div>
           <div class="card" data-reveal>
             <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><polyline points="20 3 20 7 16 7"/></svg></div>
             <span class="pillar-num">Changes</span>
-            <h3 class="h3">Quarters, now days</h3>
+            <h3 class="h3"><span class="was">Quarters,</span> now days</h3>
+            <div class="then-now" aria-hidden="true">
+              <div class="tn-row tn-then"><span>Then</span><i style="--w: 100%"></i><b>A quarter</b></div>
+              <div class="tn-row tn-now"><span>Now</span><i style="--w: 5%"></i><b>Days</b></div>
+            </div>
             <p>Your business changes. Your ERP keeps up. Change requests that used to wait for a release cycle ship in days, not quarters.</p>
           </div>
         </div>
@@ -236,43 +284,113 @@
           <h2 class="h2" data-reveal>One System. Every Department. Built Around You.</h2>
           <p class="lead" data-reveal>We don't resell licenses. We build your ERP module by module, starting where it bleeds most. And every module ships AI-enabled: agents working inside the CRM, extraction feeding the back office, alerts watching the numbers.</p>
         </div>
-        <div class="grid-3" data-reveal-group>
-          <div class="card" data-reveal>
-            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg></div>
-            <span class="pillar-num">01</span>
-            <h3 class="h3">Bespoke CRM</h3>
-            <p>Pipeline, follow-up, and customer lifecycle built around your exact sales process, with AI agents answering, qualifying, and chasing every lead 24/7.</p>
-            <a class="card-link" href="/services.html">The CRM module →</a>
-          </div>
-          <div class="card" data-reveal>
-            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 7 12 12 2 7"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg></div>
-            <span class="pillar-num">02</span>
-            <h3 class="h3">Operations &amp; Finance Modules</h3>
-            <p>Orders, projects, inventory, invoicing, reconciliation, statements. The back office that used to live in spreadsheets, running itself on schedule.</p>
-            <a class="card-link" href="/services.html">The ops modules →</a>
-          </div>
-          <div class="card" data-reveal>
-            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="17" x2="8" y2="11"/><line x1="12" y1="17" x2="12" y2="7"/><line x1="16" y1="17" x2="16" y2="13"/></svg></div>
-            <span class="pillar-num">03</span>
-            <h3 class="h3">Reporting &amp; Command Dashboards</h3>
-            <p>Every lead, order, and number that matters on one screen, updating in real time. The whole company on one source of truth.</p>
-            <a class="card-link" href="/services.html">The visibility layer →</a>
-          </div>
+        <div class="mod-grid" data-reveal-group>
+          <article class="mod" data-reveal>
+            <div class="mod-screen" aria-hidden="true">
+              <div class="mini-kanban">
+                <div class="mini-col"><b>New</b><i></i><i></i></div>
+                <div class="mini-col"><b>Qualified</b><i></i></div>
+                <div class="mini-col"><b>Won</b><i></i><i></i></div>
+                <div class="mini-lead"><span></span>Villa 14 <em>AI</em></div>
+              </div>
+            </div>
+            <div class="mod-body">
+              <span class="mod-num">01</span>
+              <h3 class="h3">Bespoke CRM</h3>
+              <p>Pipeline, follow-up, and customer lifecycle built around your exact sales process, with AI agents answering, qualifying, and chasing every lead 24/7.</p>
+              <a class="mod-link" href="/services.html">The CRM module →</a>
+            </div>
+          </article>
+          <article class="mod" data-reveal>
+            <div class="mod-screen" aria-hidden="true">
+              <div class="mini-ledger">
+                <div class="mini-row"><i></i><b>AED 12,400</b><u></u></div>
+                <div class="mini-row"><i></i><b>AED 3,150</b><u></u></div>
+                <div class="mini-row"><i></i><b>AED 48,000</b><u></u></div>
+                <div class="mini-row"><i></i><b>AED 890</b><u></u></div>
+              </div>
+            </div>
+            <div class="mod-body">
+              <span class="mod-num">02</span>
+              <h3 class="h3">Operations &amp; Finance Modules</h3>
+              <p>Orders, projects, inventory, invoicing, reconciliation, statements. The back office that used to live in spreadsheets, running itself on schedule.</p>
+              <a class="mod-link" href="/services.html">The ops modules →</a>
+            </div>
+          </article>
+          <article class="mod" data-reveal>
+            <div class="mod-screen" aria-hidden="true">
+              <div class="mini-chart">
+                <div class="mini-kpi"><b>Live</b><span>Revenue, this month</span></div>
+                <div class="mini-bars"><i style="--h: 40%"></i><i style="--h: 55%"></i><i style="--h: 48%"></i><i style="--h: 70%"></i><i style="--h: 62%"></i><i style="--h: 84%"></i><i style="--h: 96%"></i></div>
+              </div>
+            </div>
+            <div class="mod-body">
+              <span class="mod-num">03</span>
+              <h3 class="h3">Reporting &amp; Command Dashboards</h3>
+              <p>Every lead, order, and number that matters on one screen, updating in real time. The whole company on one source of truth.</p>
+              <a class="mod-link" href="/services.html">The visibility layer →</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- AI + HUMAN -->
-    <section class="section">
+    <section class="section ai-section" id="ai">
       <div class="container">
         <div class="section-head" data-reveal-group>
           <span class="eyebrow" data-reveal>AI-Enabled, Human-Controlled</span>
-          <h2 class="h2" data-reveal>The AI Does the Work. Your Team Stays in Charge.</h2>
+          <h2 class="h2" data-reveal>The AI Does the Work. <span class="accent">Your Team Stays in Charge.</span></h2>
           <p class="lead" data-reveal>We AI-enable the platform itself, threading intelligence through every module. The repetitive work runs itself. The decisions stay yours.</p>
         </div>
-        <div class="shift-grid" data-reveal-group>
-          <div class="shift-panel shift-new" data-reveal>
-            <h3 class="h3">What the AI runs</h3>
+
+        <!-- live work stream: inbox -> AI core -> done / your team -->
+        <div class="ai-stage" data-reveal aria-hidden="true">
+          <div class="ai-lane ai-inbox">
+            <span class="ai-lane-label"><i></i>Incoming work</span>
+            <div class="ai-slots"><span></span><span></span><span></span><span></span></div>
+            <div class="ai-spawn"></div>
+          </div>
+
+          <div class="ai-core">
+            <div class="ai-orb">
+              <span class="ai-orb-ring"></span>
+              <span class="ai-orb-ring ai-orb-ring-2"></span>
+              <span class="ai-orb-pulse"></span>
+              <b>AI</b>
+            </div>
+            <span class="ai-core-label">Inside every module</span>
+            <span class="ai-core-status">Listening</span>
+          </div>
+
+          <div class="ai-lane ai-outputs">
+            <div class="ai-card ai-team">
+              <div class="ai-card-head">
+                <span class="ai-avatars"><i></i><i></i><i></i></span>
+                <strong>Your team</strong>
+                <span class="ai-counter"><b data-counter="team">0</b> decisions</span>
+              </div>
+              <ul class="ai-queue"></ul>
+              <p class="ai-card-hint">Approvals, exceptions, the final word</p>
+            </div>
+            <div class="ai-card ai-done">
+              <div class="ai-card-head">
+                <span class="ai-check">✓</span>
+                <strong>Handled by AI</strong>
+                <span class="ai-counter"><b data-counter="done">0</b> today</span>
+              </div>
+              <ul class="ai-queue"></ul>
+              <p class="ai-card-hint">Full audit trail of both sides</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-lists" data-reveal-group>
+          <div class="ai-list ai-list-ai" data-reveal>
+            <div class="ai-list-head">
+              <span class="ai-list-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18 9.4l-4.2 1.8L12 16l-1.8-4.8L6 9.4l4.2-1.8z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span>
+              <h3 class="h3">What the AI runs</h3>
+            </div>
             <ul>
               <li>Answers and qualifies every lead in seconds, 24/7</li>
               <li>Drafts replies, follow-ups, and outreach</li>
@@ -280,8 +398,11 @@
               <li>Flags anomalies the moment a number drifts</li>
             </ul>
           </div>
-          <div class="shift-panel shift-human" data-reveal>
-            <h3 class="h3">What your team keeps</h3>
+          <div class="ai-list ai-list-human" data-reveal>
+            <div class="ai-list-head">
+              <span class="ai-list-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
+              <h3 class="h3">What your team keeps</h3>
+            </div>
             <ul>
               <li>Approvals, exceptions, and edge cases</li>
               <li>The final word on every deal and payment</li>
@@ -301,25 +422,29 @@
           <h2 class="h2" data-reveal>See Your Whole Business on One Screen.</h2>
           <p class="lead" data-reveal>The biggest cost of scattered software isn't the fees. It's flying blind. A custom ERP fixes that at the root:</p>
         </div>
-        <div class="grid-4" data-reveal-group>
-          <div class="card" data-reveal>
-            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/></svg></div>
-            <span class="pillar-num">One Source of Truth</span>
+        <div class="vis-band" data-reveal>
+          <div class="vis-item">
+            <span class="vis-index">01</span>
+            <span class="vis-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/></svg></span>
+            <h3 class="h3">One Source of Truth</h3>
             <p>Sales, operations, and finance working from the same live data. No more three versions of the same number in three departments.</p>
           </div>
-          <div class="card" data-reveal>
-            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 12 7 12 10 5 14 19 17 12 22 12"/></svg></div>
-            <span class="pillar-num">Real-Time, Not Month-End</span>
+          <div class="vis-item vis-live">
+            <span class="vis-index">02</span>
+            <span class="vis-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 12 7 12 10 5 14 19 17 12 22 12"/></svg></span>
+            <h3 class="h3">Real-Time, Not Month-End</h3>
             <p>See today's pipeline, cash position, and workload right now, not in next month's report. Decisions in minutes, not meetings.</p>
           </div>
-          <div class="card" data-reveal>
-            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 9.3-8 11-4.5-1.7-8-6-8-11V5z"/><polyline points="8.5 12 11 14.5 15.5 9.5"/></svg></div>
-            <span class="pillar-num">Full Audit Trail</span>
+          <div class="vis-item">
+            <span class="vis-index">03</span>
+            <span class="vis-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 9.3-8 11-4.5-1.7-8-6-8-11V5z"/><polyline points="8.5 12 11 14.5 15.5 9.5"/></svg></span>
+            <h3 class="h3">Full Audit Trail</h3>
             <p>Every record shows who did what and when. Accountability across the organisation without micromanaging anyone.</p>
           </div>
-          <div class="card" data-reveal>
-            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><line x1="10.8" y1="7" x2="6.3" y2="16"/><line x1="13.2" y1="7" x2="17.7" y2="16"/><line x1="7.5" y1="18" x2="16.5" y2="18"/></svg></div>
-            <span class="pillar-num">No More Silos</span>
+          <div class="vis-item">
+            <span class="vis-index">04</span>
+            <span class="vis-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><line x1="10.8" y1="7" x2="6.3" y2="16"/><line x1="13.2" y1="7" x2="17.7" y2="16"/><line x1="7.5" y1="18" x2="16.5" y2="18"/></svg></span>
+            <h3 class="h3">No More Silos</h3>
             <p>Data stops living in personal spreadsheets and chat threads. When someone leaves, nothing walks out the door with them.</p>
           </div>
         </div>
@@ -334,7 +459,7 @@
           <h2 class="h2" data-reveal>How We Build Your ERP</h2>
           <p class="lead" data-reveal>Five stages. One outcome: a system that runs your business and keeps up with it.</p>
         </div>
-        <div class="process-wrap">
+        <div class="process-wrap process-compact">
           <svg class="process-svg" aria-hidden="true" preserveAspectRatio="none"></svg>
           <div class="process-step">
             <span class="step-dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16" y2="16"/></svg></span>
@@ -362,8 +487,8 @@
             <p>We expand the system as you grow. Changes ship in days, not release cycles.</p>
           </div>
         </div>
-        <div style="margin-top:56px" data-reveal>
-          <a class="btn btn-ghost" href="/process.html">See the Full Process →</a>
+        <div style="margin-top:40px" data-reveal>
+          <a class="btn btn-ghost" href="/services.html#process">See the Full Process →</a>
         </div>
       </div>
     </section>
@@ -373,8 +498,8 @@
       <div class="container">
         <div class="section-head" data-reveal-group>
           <span class="eyebrow" data-reveal>Proof</span>
-          <h2 class="h2" data-reveal>Systems We've Built <span class="accent">(and Run Ourselves)</span></h2>
-          <p class="lead" data-reveal>Five systems across five industries: real estate, property management, manufacturing, events, and car rental. Custom-built, AI-enabled, and running real operations every day.</p>
+          <h2 class="h2" data-reveal>Systems We've Built.</h2>
+          <p class="lead" data-reveal>A few of the systems we've built, across real estate, property management, manufacturing, events, and car rental. Custom-built, AI-enabled, and running real operations every day.</p>
         </div>
         <div class="grid-3" data-reveal-group>
           <div class="card" data-reveal>
@@ -402,27 +527,20 @@
       </div>
     </section>
 
-    <!-- GUARANTEE -->
-    <section class="section">
+    <!-- FINAL CTA -->
+    <section class="cta-band cta-compact">
       <div class="container">
-        <div class="guarantee" data-reveal>
-          <span class="eyebrow">Zero Risk</span>
-          <h2 class="h2" style="margin-top:22px">The Radiant Labs Audit Guarantee</h2>
-          <p>Book a free 30-minute Systems Audit. We'll map your operations and show you, in writing, exactly what a custom ERP would replace, what it would cost, and what it would save. If we can't find at least <span class="ph" title="Placeholder: replace with real number">[X]</span> hours a week worth of automation opportunity, the audit is on us. No pitch. No hard sell.</p>
-          <div style="margin-top:36px">
+        <div class="cta-panel" data-reveal>
+          <span class="cta-rings" aria-hidden="true"><i></i><i></i><i></i></span>
+          <div class="cta-panel-inner">
+            <h2 class="h2">Your Business Deserves Software That Fits.</h2>
+            <ul class="cta-chips" aria-label="What you get">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>30 minutes</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>A written map of what your ERP would replace and save</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 9.3-8 11-4.5-1.7-8-6-8-11V5z"/><polyline points="8.5 12 11 14.5 15.5 9.5"/></svg>No obligation</li>
+            </ul>
             <a class="btn btn-primary" href="/contact.html">Book Your Free Systems Audit</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <section class="cta-band">
-      <div class="container" data-reveal-group>
-        <h2 class="h2" data-reveal>Your Business Deserves Software That Fits.</h2>
-        <p class="lead" data-reveal style="margin-inline:auto">30 minutes. A written map of what your custom ERP would replace and save. No obligation.</p>
-        <div data-reveal>
-          <a class="btn btn-primary" href="/contact.html">Book Your Free Systems Audit</a>
         </div>
       </div>
     </section>
@@ -440,8 +558,7 @@
           <h4>Pages</h4>
           <a href="/services.html">Services</a>
           <a href="/case-studies.html">Case Studies</a>
-          <a href="/process.html">Process</a>
-          <a href="/about.html">About</a>
+            <a href="/about.html">About</a>
           <a href="/contact.html">Book an Audit</a>
         </div>
         <div class="footer-col">

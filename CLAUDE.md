@@ -44,8 +44,9 @@ by industry only.
 
 ## Stack & commands
 
-Vite multi-page vanilla JS. Pages: index, services, case-studies, process,
-about, contact (each a root-level .html).
+Vite multi-page vanilla JS. Pages: index, services, case-studies, about,
+contact (each a root-level .html). The old process page was merged into
+services.html as the `#process` section; vercel.json redirects /process there.
 
 ```
 npm install
@@ -58,7 +59,11 @@ npm run build    # must pass before every push
   line drawing, nav, contact form (client-side success only).
 - `src/hero3d.js` — home hero Three.js node-sphere (lazy-loaded).
 - `src/flight.js` — the case-studies "flight" (see below).
-- `src/styles/main.css` — whole design system. Black base, accent #4d8dff.
+- `src/styles/main.css` — whole design system. Tokens default to the black
+  base (accent #4d8dff); `body.theme-light` swaps them to the white theme.
+  Every page is `theme-light` except case-studies, which stays dark for the
+  flight. Product-UI panels (module tiles, AI stage, final CTA) are dark on
+  purpose.
 
 ## The case-studies flight (src/flight.js) — fragile, read before touching
 
@@ -106,6 +111,10 @@ appear automatically: `crm-realestate.png`, `property-management.png`,
   (`#`), confirm `hello@radiantlabs.ae` is real.
 - Contact form has no backend (shows a client-side success message only).
   Wire to Formspree/Web3Forms or similar.
+- The marquee under the hero (`.marquee-track` in index.html) shows the five
+  industries, not client logos, because clients are not named. If the owner
+  gets logo permission, swap the `<li>` items for `<img>` logos (mono, ~28px
+  tall) and keep the list repeated three times for the seamless loop.
 
 ## Git conventions
 

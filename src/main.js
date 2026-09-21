@@ -88,23 +88,96 @@ if (!reducedMotion) {
       onUpdate: () => {
         el.textContent = Math.round(obj.v).toLocaleString() + suffix
       },
+      onComplete: () => (el.dataset.settled = '1'),
     })
   })
+}
+
+/* ---------- hero dashboard: numbers keep moving after the count-up ---------- */
+const heroApp = document.querySelector('.hero-app')
+if (heroApp && !reducedMotion) {
+  const leads = heroApp.querySelector('[data-count="1284"]')
+  const deals = heroApp.querySelector('[data-count="24"]')
+  const bump = (el, by) => {
+    if (!el.dataset.settled) return // intro count-up still running
+    const now = parseInt(el.textContent.replace(/\D/g, ''), 10) || 0
+    el.textContent = (now + by).toLocaleString()
+    el.classList.remove('tick')
+    void el.offsetWidth // restart the tick animation
+    el.classList.add('tick')
+    const tag = document.createElement('span')
+    tag.className = 'kpi-bump'
+    tag.textContent = `+${by}`
+    el.parentElement.appendChild(tag)
+    setTimeout(() => tag.remove(), 1700)
+  }
+  let n = 0
+  let timer = null
+  const start = () => {
+    if (timer) return
+    timer = setInterval(() => {
+      n += 1
+      bump(leads, 1 + Math.floor(Math.random() * 3))
+      if (n % 4 === 0) bump(deals, 1)
+    }, 3600)
+  }
+  const stop = () => {
+    clearInterval(timer)
+    timer = null
+  }
+  // wait for the intro count-up, then only run while the hero is on screen
+  ScrollTrigger.create({
+    trigger: heroApp,
+    start: 'top 90%',
+    end: 'bottom 10%',
+    onEnter: start,
+    onEnterBack: start,
+    onLeave: stop,
+    onLeaveBack: stop,
+  })
+  document.addEventListener('visibilitychange', () => (document.hidden ? stop() : ScrollTrigger.isInViewport(heroApp) && start()))
 }
 
 /* ---------- process line (home teaser + process page) ---------- */
 const processWrap = document.querySelector('.process-wrap')
 if (processWrap) {
   const svg = processWrap.querySelector('.process-svg')
-  const h = processWrap.scrollHeight
-  svg.setAttribute('viewBox', `0 0 4 ${h}`)
-  svg.innerHTML = `
-    <line class="track" x1="2" y1="0" x2="2" y2="${h}"></line>
-    <line class="draw" x1="2" y1="0" x2="2" y2="${h}"
-      stroke-dasharray="${h}" stroke-dashoffset="${h}"></line>`
-  const draw = svg.querySelector('.draw')
+  const steps = [...processWrap.querySelectorAll('.process-step')]
+  const horizontal = processWrap.classList.contains('process-compact') && window.matchMedia('(min-width: 901px)').matches
 
-  if (!reducedMotion) {
+  let draw
+  if (horizontal) {
+    // line runs dot-centre to dot-centre across the row
+    const dots = steps.map((s) => s.querySelector('.step-dot').getBoundingClientRect())
+    const left = processWrap.getBoundingClientRect().left
+    const x1 = dots[0].left + dots[0].width / 2 - left
+    const x2 = dots[dots.length - 1].left + dots[dots.length - 1].width / 2 - left
+    const w = processWrap.clientWidth
+    svg.setAttribute('viewBox', `0 0 ${w} 4`)
+    svg.innerHTML = `
+      <line class="track" x1="${x1}" y1="2" x2="${x2}" y2="2"></line>
+      <line class="draw" x1="${x1}" y1="2" x2="${x2}" y2="2"
+        stroke-dasharray="${x2 - x1}" stroke-dashoffset="${x2 - x1}"></line>`
+    draw = svg.querySelector('.draw')
+  } else {
+    const h = processWrap.scrollHeight
+    svg.setAttribute('viewBox', `0 0 4 ${h}`)
+    svg.innerHTML = `
+      <line class="track" x1="2" y1="0" x2="2" y2="${h}"></line>
+      <line class="draw" x1="2" y1="0" x2="2" y2="${h}"
+        stroke-dasharray="${h}" stroke-dashoffset="${h}"></line>`
+    draw = svg.querySelector('.draw')
+  }
+
+  if (reducedMotion) {
+    draw.style.strokeDashoffset = 0
+    steps.forEach((s) => s.classList.add('lit'))
+  } else if (horizontal) {
+    // short section: play once, lighting each step as the line reaches it
+    const tl = gsap.timeline({ scrollTrigger: { trigger: processWrap, start: 'top 75%', once: true } })
+    tl.to(draw, { strokeDashoffset: 0, duration: 1.6, ease: 'power2.inOut' })
+    steps.forEach((step, i) => tl.call(() => step.classList.add('lit'), null, i * 0.38))
+  } else {
     gsap.to(draw, {
       strokeDashoffset: 0,
       ease: 'none',
@@ -115,7 +188,7 @@ if (processWrap) {
         scrub: 0.6,
       },
     })
-    processWrap.querySelectorAll('.process-step').forEach((step) => {
+    steps.forEach((step) => {
       ScrollTrigger.create({
         trigger: step,
         start: 'top 62%',
@@ -123,10 +196,20 @@ if (processWrap) {
         onLeaveBack: () => step.classList.remove('lit'),
       })
     })
-  } else {
-    draw.style.strokeDashoffset = 0
-    processWrap.querySelectorAll('.process-step').forEach((s) => s.classList.add('lit'))
   }
+}
+
+/* ---------- why now: then vs now meters ---------- */
+const whyNow = document.querySelector('#why-now .grid-3')
+if (whyNow && !reducedMotion) {
+  const cards = [...whyNow.querySelectorAll('.card')]
+  const tl = gsap.timeline({ scrollTrigger: { trigger: whyNow, start: 'top 72%', once: true } })
+  cards.forEach((card, i) => {
+    const at = i * 0.25
+    tl.to(card.querySelector('.tn-then i'), { '--p': 1, duration: 0.7, ease: 'power2.out' }, at)
+    tl.to(card.querySelector('.tn-now i'), { '--p': 1, duration: 0.6, ease: 'back.out(2)' }, at + 0.55)
+    tl.call(() => card.querySelector('.was').classList.add('struck'), null, at + 0.95)
+  })
 }
 
 /* ---------- the shift: six tools vs one system ---------- */
@@ -221,6 +304,201 @@ if (shift) {
   } else {
     shift.classList.add('shift-live')
   }
+}
+
+/* ---------- AI + human: live work stream ---------- */
+const aiStage = document.querySelector('.ai-stage')
+if (aiStage && !reducedMotion) {
+  const spawn = aiStage.querySelector('.ai-spawn')
+  const core = aiStage.querySelector('.ai-core')
+  const orb = core.querySelector('.ai-orb')
+  const status = core.querySelector('.ai-core-status')
+  const cards = {
+    done: aiStage.querySelector('.ai-done'),
+    team: aiStage.querySelector('.ai-team'),
+  }
+  const counters = { done: 0, team: 0 }
+
+  const ICONS = {
+    lead: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>',
+    doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>',
+    money: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg>',
+    chart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>',
+    mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
+  }
+
+  // what comes in, what the AI does with it, and who it goes to
+  const JOBS = [
+    { icon: 'lead', in: 'New lead, Property Finder', out: 'Qualified, replied in 4s', to: 'done', status: 'Qualifying lead' },
+    { icon: 'doc', in: 'Supplier invoice, PDF', out: '14 line items extracted', to: 'done', status: 'Reading invoice' },
+    { icon: 'money', in: 'Expense, AED 18,400', out: 'Flagged: 3x above average', to: 'team', action: 'Approve', status: 'Checking pattern' },
+    { icon: 'mail', in: '12 leads gone quiet', out: 'Follow-ups drafted', to: 'done', status: 'Drafting replies' },
+    { icon: 'doc', in: 'Tenancy contract', out: 'Dates and rent captured', to: 'done', status: 'Extracting terms' },
+    { icon: 'lead', in: 'Deal, Villa 14', out: 'Ready to close', to: 'team', action: 'Sign off', status: 'Preparing deal' },
+    { icon: 'chart', in: 'Collection rate, live', out: 'Drift alert sent', to: 'done', status: 'Watching numbers' },
+    { icon: 'money', in: 'Payment, AED 42,000', out: 'Needs your approval', to: 'team', action: 'Approve', status: 'Routing to you' },
+  ]
+
+  const setStatus = (text) => {
+    status.classList.add('swap')
+    setTimeout(() => {
+      status.textContent = text
+      status.classList.remove('swap')
+    }, 250)
+  }
+
+  const center = (el) => {
+    const r = el.getBoundingClientRect()
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 }
+  }
+
+  // land a finished job in its output card as a row, then retire it
+  const land = (job) => {
+    const card = cards[job.to]
+    const list = card.querySelector('.ai-queue')
+    const row = document.createElement('li')
+    row.innerHTML =
+      job.to === 'team'
+        ? `<em>${job.out}</em><button class="ai-approve" type="button" tabindex="-1">${job.action}</button>`
+        : `<span class="ai-tick">✓</span><em>${job.out}</em><span class="ai-when">just now</span>`
+    list.prepend(row)
+    while (list.children.length > 2) list.lastElementChild.remove()
+    gsap.from(row, { height: 0, opacity: 0, duration: 0.35, ease: 'power2.out', clearProps: 'height' })
+
+    card.classList.add('flash')
+    setTimeout(() => card.classList.remove('flash'), 700)
+
+    const bump = () => {
+      counters[job.to] += 1
+      const el = card.querySelector('[data-counter]')
+      el.textContent = counters[job.to]
+      gsap.fromTo(el, { scale: 1.4 }, { scale: 1, duration: 0.4, ease: 'back.out(2)' })
+    }
+
+    if (job.to === 'team') {
+      // the human presses the button. that is the whole point.
+      setTimeout(() => {
+        row.classList.add('approved')
+        row.querySelector('.ai-approve').textContent = job.action === 'Approve' ? 'Approved' : 'Signed'
+        bump()
+      }, 1500)
+      setTimeout(() => gsap.to(row, { opacity: 0, height: 0, marginTop: -6, duration: 0.4, onComplete: () => row.remove() }), 4200)
+    } else {
+      bump()
+      setTimeout(() => gsap.to(row, { opacity: 0, height: 0, marginTop: -6, duration: 0.4, onComplete: () => row.remove() }), 5200)
+    }
+  }
+
+  const run = (job) => {
+    const el = document.createElement('div')
+    el.className = 'ai-job'
+    el.innerHTML = `<i>${ICONS[job.icon]}</i><em>${job.in}</em>`
+    spawn.appendChild(el)
+
+    const from = center(el)
+    const toCore = center(orb)
+    const dropAt = () => {
+      // aim for the card's queue area
+      const r = cards[job.to].querySelector('.ai-queue').getBoundingClientRect()
+      return { x: r.left + Math.min(r.width, 250) / 2, y: r.top + 17 }
+    }
+
+    const tl = gsap.timeline({ onComplete: () => el.remove() })
+    tl.fromTo(el, { opacity: 0, scale: 0.9, y: -8 }, { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: 'power2.out' })
+      .to(el, { x: toCore.x - from.x, y: toCore.y - from.y, duration: 1.1, ease: 'power2.inOut' }, '+=0.35')
+      .call(() => {
+        core.classList.add('busy')
+        setStatus(job.status)
+      }, null, '-=0.25')
+      .to(el, { scale: 0.5, opacity: 0, duration: 0.3, ease: 'power2.in' })
+      // the AI works on it
+      .call(
+        () => {
+          el.classList.add('is-result', job.to === 'team' ? 'to-team' : 'to-done')
+          el.querySelector('em').textContent = job.out
+          core.classList.remove('busy')
+          setStatus(job.to === 'team' ? 'Handing to your team' : 'Done')
+        },
+        null,
+        '+=0.75'
+      )
+      .to(el, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.6)' })
+      .add(() => {
+        const d = dropAt()
+        gsap.to(el, {
+          x: d.x - from.x,
+          y: d.y - from.y,
+          duration: 0.9,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            gsap.to(el, { opacity: 0, scale: 0.85, duration: 0.25 })
+            land(job)
+            setTimeout(() => setStatus('Listening'), 900)
+          },
+        })
+      })
+      .to({}, { duration: 1.5 })
+  }
+
+  // run only while on screen, one job every few seconds
+  let timer = null
+  let i = 0
+  const start = () => {
+    if (timer) return
+    run(JOBS[i++ % JOBS.length])
+    timer = setInterval(() => run(JOBS[i++ % JOBS.length]), 3200)
+  }
+  const stop = () => {
+    clearInterval(timer)
+    timer = null
+  }
+  ScrollTrigger.create({
+    trigger: aiStage,
+    start: 'top 85%',
+    end: 'bottom 15%',
+    onEnter: start,
+    onEnterBack: start,
+    onLeave: stop,
+    onLeaveBack: stop,
+  })
+  document.addEventListener('visibilitychange', () => (document.hidden ? stop() : ScrollTrigger.isInViewport(aiStage) && start()))
+} else if (aiStage) {
+  // reduced motion: show a settled state
+  aiStage.querySelector('.ai-done .ai-queue').innerHTML =
+    '<li><span class="ai-tick">✓</span><em>Qualified, replied in 4s</em></li><li><span class="ai-tick">✓</span><em>14 line items extracted</em></li>'
+  aiStage.querySelector('.ai-team .ai-queue').innerHTML =
+    '<li class="approved"><em>Flagged: 3x above average</em><span class="ai-approve">Approved</span></li>'
+  aiStage.querySelector('[data-counter="done"]').textContent = '38'
+  aiStage.querySelector('[data-counter="team"]').textContent = '4'
+}
+
+/* ---------- visibility: icons draw themselves in ---------- */
+const visBand = document.querySelector('.vis-band')
+if (visBand && !reducedMotion) {
+  const items = [...visBand.querySelectorAll('.vis-item')]
+  const shapes = items.map((item) => [...item.querySelectorAll('.vis-icon svg *')])
+  shapes.flat().forEach((el) => {
+    const len = el.getTotalLength()
+    el.style.strokeDasharray = len
+    el.style.strokeDashoffset = len
+  })
+  const tl = gsap.timeline({
+    scrollTrigger: { trigger: visBand, start: 'top 75%', once: true },
+    onComplete: () => {
+      // free the dash arrays so the heartbeat can take over
+      shapes.flat().forEach((el) => {
+        el.style.strokeDasharray = ''
+        el.style.strokeDashoffset = ''
+      })
+      visBand.querySelector('.vis-live').classList.add('beat')
+    },
+  })
+  items.forEach((item, i) => {
+    tl.from(item, { y: 18, opacity: 0, duration: 0.6, ease: 'power2.out' }, i * 0.15)
+    tl.to(shapes[i], { strokeDashoffset: 0, duration: 0.9, ease: 'power2.inOut', stagger: 0.12 }, i * 0.15 + 0.2)
+  })
+} else if (visBand) {
+  visBand.querySelector('.vis-live').classList.add('beat')
 }
 
 /* ---------- lazy-load 3D scenes ---------- */

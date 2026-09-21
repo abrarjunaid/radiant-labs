@@ -1,6 +1,10 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/process", "destination": "/services#process", "permanent": true },
+    { "source": "/process.html", "destination": "/services#process", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/textures/(.*)",
