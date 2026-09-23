@@ -1,10 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="14" fill="#0e1424"/>
-  <g transform="translate(6 8) scale(0.9)">
-    <clipPath id="b"><circle cx="28" cy="49" r="14.6"/></clipPath>
-    <circle fill="none" stroke="#ffffff" stroke-width="11" cx="28" cy="49" r="20" pathLength="360" stroke-dasharray="0 26 308 26" transform="rotate(-90 28 49)"/>
-    <rect fill="#ffffff" x="44" y="25" width="12" height="50"/>
-    <g clip-path="url(#b)" fill="#4d8dff"><path d="M12 52 C 19 46, 25 51, 29 51 S 39 46, 44 50 L 44 66 L 12 66 Z"/></g>
-    <g fill="#4d8dff"><circle cx="31" cy="15" r="5.5"/><circle cx="23" cy="3.5" r="4.5"/><circle cx="30" cy="-6.5" r="3.5"/></g>
+  <g transform="translate(13.5 13) scale(0.37)" fill="#4d8dff">
+    <path d="M34.69 0.00L36.53 0.00L39.48 1.48L54.61 14.58L77.68 33.76L79.34 35.42L81.37 38.19L82.84 41.14L83.76 44.28L83.76 52.03L82.66 55.90L80.07 61.44L74.54 69.74L74.54 68.45L73.99 66.05L72.88 63.47L70.48 59.78L67.90 56.64L60.15 48.89L54.06 43.36L25.65 19.00L24.91 17.16L25.28 14.94L32.29 3.14L33.03 1.48L33.95 0.37Z"/>
+    <path d="M40.77 35.06L52.03 54.06L52.40 56.64L51.66 58.67L25.46 98.52L23.62 100.37L21.03 101.48L11.07 101.48L1.85 101.11L0.18 99.45L0.00 97.60L0.55 96.13Z"/>
+    <path d="M47.79 72.32L78.60 72.32L80.07 72.88L81.55 74.35L99.26 95.94L100.00 97.60L100.00 98.89L99.63 99.82L98.52 100.92L97.60 101.29L71.22 101.48Z"/>
   </g>
 </svg>

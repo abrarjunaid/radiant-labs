@@ -231,30 +231,31 @@ h1, h2, h3, h4 {
   gap: 32px;
 }
 
-/* wordmark: "radiant labs" in Urbanist Bold, the a of labs drawn as a flask (#flask-a symbol in each page) */
+/* logo lockup: the Radiant monogram (#rl-mark symbol in each page) + the name in Urbanist Bold */
 .logo {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
+  gap: 0.4em;
   white-space: nowrap;
   line-height: 1;
   font-family: 'Urbanist', 'Century Gothic', var(--font-display), sans-serif;
-  font-size: 1.85rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: var(--text);
 }
 
-.logo .w1 {
-  margin-right: 0.22em;
+.logo .mark {
+  width: 1.04em;
+  height: 1.06em;
+  flex-shrink: 0;
+  display: block;
+  color: var(--accent);
+  transition: transform 0.25s ease;
 }
 
-.logo .flask {
-  display: inline-block;
-  width: 0.58em;
-  height: 0.75em;
-  vertical-align: baseline;
-  overflow: visible;
-  flex-shrink: 0;
+.logo:hover .mark {
+  transform: translateY(-1px) scale(1.04);
 }
 
 .site-nav {
@@ -802,7 +803,7 @@ h1, h2, h3, h4 {
 
 .footer-grid .logo {
   margin-bottom: 16px;
-  display: inline-block;
+  display: inline-flex;
 }
 
 .footer-grid p {
