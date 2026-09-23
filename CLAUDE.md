@@ -33,11 +33,13 @@ by industry only.
 
 1. **No em dashes anywhere in site copy.** Use periods, commas, colons,
    parentheses. Check with `grep "—" *.html` before committing.
-2. **Meta `<title>`/descriptions use lowercase `rdnt labs`** (format:
-   `Page | rdnt labs`). The UI logo is a lockup: the Radiant monogram
+2. **Meta `<title>`/descriptions use `Radiant Labs`** (format:
+   `Page | Radiant Labs`; the home page is just `Radiant Labs`). The
+   lowercase `rdnt labs` styling was dropped in Sept 2026. The UI logo is a
+   lockup: the Radiant monogram
    (owner-supplied artwork, traced to three paths as the inline `#rl-mark`
    SVG symbol at the top of each page's `<body>`) in brand blue, with
-   "Radiant Labs" beside it in Urbanist Bold. Used by `.logo` in the header
+   "RadiantLabs" (one word, no space) beside it in Urbanist Bold. Used by `.logo` in the header
    and footer. Keep the symbol, the Urbanist font link and the markup in
    sync across all pages. `public/favicon.svg` is the monogram on a dark
    tile. The mark uses `currentColor`, so never hard-code its fill.
