@@ -39,7 +39,7 @@ by industry only.
    lockup: the Radiant monogram
    (owner-supplied artwork, traced to three paths as the inline `#rl-mark`
    SVG symbol at the top of each page's `<body>`) in brand blue, with
-   "RadiantLabs" (one word, no space) beside it in Urbanist Bold. Used by `.logo` in the header
+   "Radiant Labs" beside it in Urbanist Bold. Used by `.logo` in the header
    and footer. Keep the symbol, the Urbanist font link and the markup in
    sync across all pages. `public/favicon.svg` is the monogram on a dark
    tile. The mark uses `currentColor`, so never hard-code its fill.
